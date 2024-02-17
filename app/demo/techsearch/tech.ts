@@ -1,9 +1,10 @@
-﻿type techItem = {
+﻿export type TechItem = {
     id: string,
+    displayName: string,
     tags: string[]
 }
 
-export const techItems: techItem[] = [
+export const techItems: TechItem[] = [
     buildTechItem('PHP Unit', ['unit testing', 'php']),
     buildTechItem('PHP 8.1', ['php', 'language', 'backend']),
     buildTechItem('Prophecy', ['php', 'mocking', 'unit testing']),
@@ -22,9 +23,15 @@ export const techItems: techItem[] = [
 
 ]
 
-function buildTechItem(id: string, tags: string[]): techItem {
+export function getById(id: string): TechItem | null {
+    return techItems.find((item) => item.id == id) ?? null;
+}
+
+function buildTechItem(displayName: string, tags: string[]): TechItem {
+    const id = displayName.toLowerCase().replace(/\s/g, '')
     return {
         id,
+        displayName,
         tags
     }
 }

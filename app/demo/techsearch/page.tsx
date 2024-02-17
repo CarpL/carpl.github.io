@@ -1,7 +1,7 @@
 "use client"
 import { title } from "@/components/primitives";
 import TechSearch from "./TechSearch";
-import TechDisplay from "./TechDisplay";
+import TechDisplay from "./TechGrid";
 import { useState } from "react";
 
 export default function Page() {
