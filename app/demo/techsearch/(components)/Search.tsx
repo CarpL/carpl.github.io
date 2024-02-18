@@ -4,12 +4,13 @@ import { Chip } from "@nextui-org/chip";
 import { Card, CardBody } from "@nextui-org/card";
 import { Select, SelectItem } from "@nextui-org/select";
 import { Autocomplete, AutocompleteSection, AutocompleteItem } from "@nextui-org/autocomplete";
-import { tags } from "./tags";
+import { Tag, TagGroup, tagGroups } from "../(data)/tags";
 
-export default function TechSearch({ searchTags, addNewTag, setSearchTags }: { searchTags: string[], addNewTag: CallableFunction, setSearchTags: CallableFunction }) {
+export default function Search({ searchTags, addNewTag, setSearchTags }: { searchTags: string[], addNewTag: CallableFunction, setSearchTags: CallableFunction }) {
 
     const [inputValue, setInputValue] = useState<string>('')
 
+    const tags = tagGroups.reduce((accumulator: Tag[], current: TagGroup) => ([...accumulator, ...current.tags]), [])
     const selectableTags = tags.filter(tag => !searchTags.includes(tag.id));
 
     function handleClose(tagToRemove: string) {
@@ -42,10 +43,14 @@ export default function TechSearch({ searchTags, addNewTag, setSearchTags }: { s
                 onSelectionChange={handleAddTag}
             >
                 {
-                    selectableTags.map((tag) => (
-                        <AutocompleteItem key={tag.id}>
-                            {tag.id}
-                        </AutocompleteItem>
+                    tagGroups.map((tagGroup) => (
+                        <AutocompleteSection key={tagGroup.id} title={tagGroup.id}>
+                            {tagGroup.tags.map((tag) => (
+                                <AutocompleteItem key={tag.id}>
+                                    {tag.id}
+                                </AutocompleteItem>
+                            ))}
+                        </AutocompleteSection>
                     ))
                 }
             </Autocomplete>

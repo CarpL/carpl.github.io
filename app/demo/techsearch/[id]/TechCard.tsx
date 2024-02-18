@@ -1,4 +1,4 @@
-﻿import { TechItem } from "@/app/demo/techsearch/tech"
+﻿import { TechItem } from "@/app/demo/techsearch/(data)/tech"
 import { subtitle, title } from "@/components/primitives"
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card"
 import { Chip } from "@nextui-org/chip"
