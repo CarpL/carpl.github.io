@@ -21,7 +21,7 @@ export default function TechCard({ techItem }: { techItem: TechItem }) {
                     <h3 className={subtitle()}>Tags</h3>
                     <div className="flex gap-2">
                         {techItem.tags.map((tag) => (
-                            <Chip key={tag}>{tag}</Chip>
+                            <Chip key={tag.id}>{tag.id}</Chip>
                         ))}
                     </div>
                 </section>
