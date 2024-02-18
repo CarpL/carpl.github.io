@@ -1,5 +1,5 @@
 ﻿import TechCard from "@/app/demo/techsearch/[id]/TechCard";
-import { TechItem, getById, techItems } from "@/app/demo/techsearch/tech";
+import { TechItem, getById, techItems } from "@/app/demo/techsearch/(data)/tech";
 import { title } from "@/components/primitives";
 
 export default function Page(props: { params: { id: string } }) {
